@@ -58,3 +58,28 @@ todoManager/
 │
 └── templates/
     └── base.html
+
+
+
+
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+
+![Home Page](screenshots/home.png)
+
+### 🔐 Login Page
+
+![Login Page](screenshots/login.png)
+
+### 📝 Todo List
+
+![Todo List](screenshots/Tasklist.png)
+
+### 📝 Registration Page
+
+![Registration Page](screenshots/registration.png)
+
+### 📝 About Page
+![About Page](screenshots/about.png)
