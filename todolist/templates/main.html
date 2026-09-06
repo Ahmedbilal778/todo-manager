@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}TodoManager Homepage{% endblock title %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<div class="container py-5">
+
+    <div class="row align-items-center">
+
+        <!-- Left Content -->
+        <div class="col-lg-6 text-center text-lg-start">
+
+            <span class="badge bg-primary mb-3 px-3 py-2">
+                ✨ Simple Task Management
+            </span>
+
+            <h1 class="display-4 fw-bold">
+                Organize Your Day.<br>
+                <span class="text-primary">Achieve More. 🚀</span>
+            </h1>
+
+            <p class="lead text-muted mt-3">
+                Manage your daily tasks easily, stay organized,
+                and make every day more productive.
+            </p>
+
+            <div class="mt-4">
+
+                <a href="{% url 'todolist' %}" class="btn btn-primary btn-lg px-4 me-2">
+                    Get Started →
+                </a>
+
+                <a href="{% url 'todolist' %}" class="btn btn-outline-primary btn-lg px-4">
+                    My Tasks
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Right Image -->
+        <div class="col-lg-6 mt-5 mt-lg-0">
+
+            <div class="shadow-lg rounded-4 overflow-hidden">
+                <img 
+                    src="{% static 'image/home.png' %}"
+                    alt="TodoManager"
+                    class="img-fluid w-100"
+                >
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Features Section -->
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Everything You Need</h2>
+        <p class="text-muted">
+            Simple tools to keep your tasks organized.
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        <!-- Feature 1 -->
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center">
+
+                <div class="fs-1 mb-3">📝</div>
+
+                <h4 class="fw-bold">Easy Task Management</h4>
+
+                <p class="text-muted">
+                    Add, edit and delete your tasks easily
+                    from one place.
+                </p>
+
+            </div>
+        </div>
+
+
+        <!-- Feature 2 -->
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center">
+
+                <div class="fs-1 mb-3">⚡</div>
+
+                <h4 class="fw-bold">Stay Productive</h4>
+
+                <p class="text-muted">
+                    Keep track of completed and pending
+                    tasks and stay focused.
+                </p>
+
+            </div>
+        </div>
+
+
+        <!-- Feature 3 -->
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center">
+
+                <div class="fs-1 mb-3">🔐</div>
+
+                <h4 class="fw-bold">Private & Secure</h4>
+
+                <p class="text-muted">
+                    Your tasks are connected to your account
+                    and kept separate from other users.
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Productivity Section -->
+<div class="container py-5">
+
+    <div class="bg-primary text-white rounded-4 p-5 text-center shadow">
+
+        <h2 class="fw-bold">
+            Small Steps Every Day Lead to Big Results.
+        </h2>
+
+        <p class="lead mt-3">
+            Start managing your tasks today and make your
+            daily routine more organized.
+        </p>
+
+        <a href="{% url 'todolist' %}" class="btn btn-light btn-lg px-4 mt-3">
+            Manage My Tasks
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock content %}

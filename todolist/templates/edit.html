@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Task
+{% endblock title %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card border-0 shadow-sm rounded-4 mx-auto" style="max-width: 600px;">
+
+        <div class="card-body p-4">
+
+            <h2 class="fw-bold mb-4">✏️ Edit Task</h2>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+
+                    <label class="form-label fw-semibold">
+                        Task
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control form-control-lg"
+                        name="task"
+                        value="{{ task.task }}"
+                        required
+                    >
+
+                </div>
+
+                <button type="submit" class="btn btn-primary px-4">
+                    Update Task
+                </button>
+
+                <a href="{% url 'todolist' %}" class="btn btn-outline-secondary px-4">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}

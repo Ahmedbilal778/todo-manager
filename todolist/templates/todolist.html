@@ -1,0 +1,309 @@
+{% extends "base.html" %}
+
+{% block title %}TodoList{% endblock title %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="fw-bold mb-1">My Tasks 📝</h1>
+            <p class="text-muted mb-0">
+                Manage your daily tasks and stay productive.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-info alert-dismissible fade show shadow-sm rounded-3" role="alert">
+                {{ message }}
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Close">
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+
+    <!-- Add Task Card -->
+    <div class="card border-0 shadow-sm rounded-4 mb-4">
+
+        <div class="card-body p-4">
+
+            <h4 class="fw-bold mb-3">
+                Add a New Task
+            </h4>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="input-group">
+
+                    <input
+                        type="text"
+                        class="form-control form-control-lg"
+                        name="task"
+                        placeholder="What do you need to do?"
+                        required
+                    >
+
+                    <button type="submit" class="btn btn-primary px-4">
+                        + Add Task
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- Task List -->
+    <div class="card border-0 shadow-sm rounded-4">
+
+        <div class="card-body p-0">
+
+            <!-- Table Header -->
+            <div class="p-4 border-bottom">
+
+                <h4 class="fw-bold mb-1">
+                    Your Tasks
+                </h4>
+
+                <p class="text-muted mb-0">
+                    Keep track of your progress.
+                </p>
+
+            </div>
+
+
+            <!-- Table -->
+            <div class="table-responsive">
+
+                <table class="table align-middle mb-0">
+
+                    <thead class="table-light">
+
+                        <tr>
+                            <th class="ps-4">Task</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                            <th>Edit</th>
+                            <th class="pe-4">Delete</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for task in all_tasks %}
+
+                            <tr>
+
+                                <!-- Task -->
+                                <td class="ps-4">
+
+                                    {% if task.is_completed %}
+
+                                        <span class="text-decoration-line-through text-muted">
+                                            {{ task.task }}
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="fw-semibold">
+                                            {{ task.task }}
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+
+                                <!-- Status -->
+                                <td>
+
+                                    {% if task.is_completed %}
+
+                                        <span class="badge text-bg-success rounded-pill px-3">
+                                            ✓ Completed
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="badge text-bg-warning rounded-pill px-3">
+                                            ⏳ Pending
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+
+                                <!-- Complete / Pending -->
+                                <td>
+
+                                    {% if task.is_completed %}
+
+                                        <a href="{% url 'pending_task' task.id %}"
+                                           class="btn btn-outline-secondary btn-sm rounded-pill px-3">
+                                            Mark Pending
+                                        </a>
+
+                                    {% else %}
+
+                                        <a href="{% url 'complete_task' task.id %}"
+                                           class="btn btn-outline-success btn-sm rounded-pill px-3">
+                                            ✓ Complete
+                                        </a>
+
+                                    {% endif %}
+
+                                </td>
+
+
+                                <!-- Edit -->
+                                <td>
+
+                                    <a href="{% url 'edit_task' task.id %}"
+                                       class="btn btn-outline-warning btn-sm rounded-pill px-3">
+                                        ✏️ Edit
+                                    </a>
+
+                                </td>
+
+
+                                <!-- Delete -->
+                                <td class="pe-4">
+
+                                    <a href="{% url 'delete_task' task.id %}"
+                                       class="btn btn-outline-danger btn-sm rounded-pill px-3">
+                                        🗑️ Delete
+                                    </a>
+
+                                </td>
+
+                            </tr>
+
+                        {% empty %}
+
+                            <tr>
+
+                                <td colspan="5" class="text-center py-5">
+
+                                    <div class="fs-1 mb-2">
+                                        📋
+                                    </div>
+
+                                    <h5 class="fw-bold">
+                                        No tasks yet
+                                    </h5>
+
+                                    <p class="text-muted mb-0">
+                                        Add your first task above.
+                                    </p>
+
+                                </td>
+
+                            </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Pagination -->
+    {% if all_tasks.paginator.num_pages > 1 %}
+
+        <nav class="mt-4" aria-label="Task pagination">
+
+            <ul class="pagination justify-content-center">
+
+                <!-- Previous -->
+                {% if all_tasks.has_previous %}
+
+                    <li class="page-item">
+
+                        <a class="page-link rounded-start-3"
+                           href="?page={{ all_tasks.previous_page_number }}">
+                            ← Previous
+                        </a>
+
+                    </li>
+
+                {% else %}
+
+                    <li class="page-item disabled">
+
+                        <span class="page-link rounded-start-3">
+                            ← Previous
+                        </span>
+
+                    </li>
+
+                {% endif %}
+
+
+                <!-- Current Page -->
+                <li class="page-item active">
+
+                    <span class="page-link">
+                        Page {{ all_tasks.number }}
+                        of {{ all_tasks.paginator.num_pages }}
+                    </span>
+
+                </li>
+
+
+                <!-- Next -->
+                {% if all_tasks.has_next %}
+
+                    <li class="page-item">
+
+                        <a class="page-link rounded-end-3"
+                           href="?page={{ all_tasks.next_page_number }}">
+                            Next →
+                        </a>
+
+                    </li>
+
+                {% else %}
+
+                    <li class="page-item disabled">
+
+                        <span class="page-link rounded-end-3">
+                            Next →
+                        </span>
+
+                    </li>
+
+                {% endif %}
+
+            </ul>
+
+        </nav>
+
+    {% endif %}
+
+</div>
+
+{% endblock content %}

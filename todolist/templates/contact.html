@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block title %}Contact Us{% endblock title %}
+
+
+{% block content %}
+<body class="bg-light">
+
+    <!-- Contact Section -->
+    <div class="container py-5">
+
+        <!-- Heading -->
+        <div class="text-center mb-5">
+            <h1 class="fw-bold display-5">Contact Us</h1>
+
+            <p class="text-secondary fs-5">
+                We're here to help. Get in touch with us.
+            </p>
+        </div>
+
+
+        <!-- Contact Cards -->
+        <div class="row justify-content-center g-4">
+
+            <!-- Email Card -->
+            <div class="col-md-4">
+
+                <div class="card border-0 shadow-sm rounded-4 text-center h-100">
+
+                    <div class="card-body p-5">
+
+                        <div class="bg-primary bg-opacity-10
+                                    rounded-circle d-inline-flex
+                                    align-items-center justify-content-center
+                                    mb-4"
+                             style="width: 70px; height: 70px;">
+
+                            <span class="fs-2">✉</span>
+
+                        </div>
+
+                        <h4 class="fw-bold">Email Us</h4>
+
+                        <p class="text-secondary mb-2">
+                            Have a question?
+                        </p>
+
+                        <a href="mailto:support@example.com"
+                           class="text-decoration-none fw-semibold">
+                            support@example.com
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Mobile Card -->
+            <div class="col-md-4">
+
+                <div class="card border-0 shadow-sm rounded-4 text-center h-100">
+
+                    <div class="card-body p-5">
+
+                        <div class="bg-success bg-opacity-10
+                                    rounded-circle d-inline-flex
+                                    align-items-center justify-content-center
+                                    mb-4"
+                             style="width: 70px; height: 70px;">
+
+                            <span class="fs-2">☎</span>
+
+                        </div>
+
+                        <h4 class="fw-bold">Call Us</h4>
+
+                        <p class="text-secondary mb-2">
+                            Mon - Sat, 9AM - 6PM
+                        </p>
+
+                        <a href="tel:+919876543210"
+                           class="text-decoration-none fw-semibold">
+                            +91 98765 43210
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Address Card -->
+            <div class="col-md-4">
+
+                <div class="card border-0 shadow-sm rounded-4 text-center h-100">
+
+                    <div class="card-body p-5">
+
+                        <div class="bg-danger bg-opacity-10
+                                    rounded-circle d-inline-flex
+                                    align-items-center justify-content-center
+                                    mb-4"
+                             style="width: 70px; height: 70px;">
+
+                            <span class="fs-2">📍</span>
+
+                        </div>
+
+                        <h4 class="fw-bold">Visit Us</h4>
+
+                        <p class="text-secondary mb-2">
+                            Come and visit our office
+                        </p>
+
+                        <p class="fw-semibold mb-0">
+                            Ujjain, Madhya Pradesh<br>
+                            India - 456001
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Footer -->
+
+</body>
+
+{% endblock content %}
