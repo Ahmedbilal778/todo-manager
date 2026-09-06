@@ -62,58 +62,6 @@ todoManager/
 │
 └── templates/
     └── base.html
-- User Registration
-- User Login & Logout
-- Create Tasks
-- Update Tasks
-- Delete Tasks
-- Mark Tasks as Completed
-- User Authentication
-- Responsive UI
-- MySQL Database
-
-## 🛠️ Technologies Used
-
-- Python
-- Django
-- HTML
-- CSS
-- Bootstrap
-- MySQL
-- Git & GitHub
-
-## 📂 Project Structure
-
-```text
-todoManager/
-│
-├── manage.py
-├── .gitignore
-│
-├── todoManager/
-│   ├── settings.py
-│   ├── urls.py
-│   ├── asgi.py
-│   └── wsgi.py
-│
-├── todolist/
-│   ├── models.py
-│   ├── views.py
-│   ├── forms.py
-│   ├── urls.py
-│   └── templates/
-│
-├── users/
-│   ├── views.py
-│   ├── forms.py
-│   ├── urls.py
-│   └── templates/
-│
-├── static/
-│   └── image/
-│
-└── templates/
-    └── base.html
 ```
 
 ## 📸 Screenshots
